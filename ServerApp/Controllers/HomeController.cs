@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ServerApp.Models;
@@ -11,16 +8,16 @@ namespace ServerApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private DataContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(DataContext cxt)
         {
-            _logger = logger;
+            context = cxt;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(context.Products.First());
         }
 
         public IActionResult Privacy()
