@@ -5,4 +5,4 @@ import { Repository } from "./repository";
   providers: [Repository]
 })
 
-export class [Repository]
+export class ModelModule { }
