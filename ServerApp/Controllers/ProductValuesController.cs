@@ -17,6 +17,7 @@ namespace ServerApp.Controllers
         [HttpGet("{id}")]
         public Product GetProduct(long id)
         {
+            System.Threading.Thread.Sleep(5000);
             return context.Products.Find(id);
         }
     }
