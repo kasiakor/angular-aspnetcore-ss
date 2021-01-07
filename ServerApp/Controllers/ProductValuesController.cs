@@ -29,7 +29,16 @@ namespace ServerApp.Controllers
             {
                 if(result.Supplier != null)
                 {
-                    result.Supplier.Products = null;
+                    //result.Supplier.Products = null;
+                    result.Supplier.Products = result.Supplier.Products.Select(p =>
+                    new Product
+                    {
+                        ProductId = p.ProductId,
+                        Name = p.Name,
+                        Category = p.Category,
+                        Description = p.Description,
+                        Price = p.Price
+                    });
                 }
                 if(result.Ratings != null )
                 {
@@ -66,6 +75,53 @@ namespace ServerApp.Controllers
 //    {
 //      "ratingId": 4,
 //      "stars": 5,
+//      "product": null
+//    }
+//  ]
+//}
+
+//additional related data
+//{
+//  "productId": 1,
+//  "name": "Kayak",
+//  "category": "Watersports",
+//  "description": "A boat for one person",
+//  "price": 275,
+//  "supplier": {
+//    "supplierId": 1,
+//    "name": "Splash Dudes",
+//    "city": "San Jose",
+//    "state": "CA",
+//    "products": [
+//      {
+//        "productId": 1,
+//        "name": "Kayak",
+//        "category": "Watersports",
+//        "description": "A boat for one person",
+//        "price": 275,
+//        "supplier": null,
+//        "ratings": null
+//      },
+//      {
+//        "productId": 2,
+//        "name": "Lifejacket",
+//        "category": "Watersports",
+//        "description": "Protective and fashionable",
+//        "price": 48.95,
+//        "supplier": null,
+//        "ratings": null
+//      }
+//    ]
+//  },
+//  "ratings": [
+//    {
+//      "ratingId": 1,
+//      "stars": 4,
+//      "product": null
+//    },
+//    {
+//      "ratingId": 2,
+//      "stars": 3,
 //      "product": null
 //    }
 //  ]
