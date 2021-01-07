@@ -4,18 +4,17 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
   export class Repository {
-      productData: Product;
-    constructor(private http: HttpClient) {
-      this.getProduct(1);
+  product: Product;
+  products: Product[];
+      constructor(private http: HttpClient) {
+        this.getProducts();
+      }
+      getProduct(id: number) {
+        this.http.get<Product>("/api/products/" + id).subscribe(p => this.product = p);
     }
-    getProduct(id: number) {
-      this.http.get<Product>("/api/products/" + id).subscribe(p => this.productData = p);
-      console.log("Product Data Received");
+    getProducts() {
+      this.http.get<Product[]>("/api/products/").subscribe(prods => this.products = prods);
+    }
   }
 
-  get product(): Product {
-    console.log("Product Data Requested");
-    return this.productData;
-  }
-  }
 
