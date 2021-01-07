@@ -23,7 +23,7 @@ namespace ServerApp.Controllers
             //DbContext.Find(type, Object[])
             // return context.Products.Find(id);
             //Find replaced by FirstOrDefault
-           Product result = context.Products.Include(p => p.Supplier).Include(p => p.Ratings).FirstOrDefault(p => p.ProductId == id);
+           Product result = context.Products.Include(p => p.Supplier).ThenInclude(s => s.Products).Include(p => p.Ratings).FirstOrDefault(p => p.ProductId == id);
 
             if(result != null)
             {
