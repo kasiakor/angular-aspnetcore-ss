@@ -30,7 +30,10 @@ namespace ServerApp
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
-            services.AddControllersWithViews();
+            //JSON serializer to omit null properties
+            services.AddControllersWithViews().AddJsonOptions(opts => {
+                opts.JsonSerializerOptions.IgnoreNullValues = true;
+            });
 
             services.AddSwaggerGen(options =>
             {
