@@ -52,9 +52,21 @@ namespace ServerApp.Controllers
             return result;
         }
         [HttpGet]
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetProducts(string category, string search)
         {
             IQueryable<Product> query = context.Products;
+
+            if(!string.IsNullOrEmpty(category))
+            {
+                string categoryLower = category.ToLower();
+                query = query.Where(p => p.Category.ToLower().Contains(categoryLower));
+            }
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                string searchLower = search.ToLower();
+                query = query.Where(p => p.Name.ToLower().Contains(searchLower) ||p.Description.ToLower().Contains(searchLower));
+            }
             return query;
         }
     }
