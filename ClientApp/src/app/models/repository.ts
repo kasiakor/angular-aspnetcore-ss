@@ -10,7 +10,7 @@ import { Filter } from "./configClasses.repository";
   filter: Filter = new Filter();
   constructor(private http: HttpClient) {
     this.filter.category = "soccer";
-    this.filter.search = "ball";
+    //this.filter.search = "ball";
         this.getProducts();
       }
       getProduct(id: number) {
