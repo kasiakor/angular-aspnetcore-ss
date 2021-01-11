@@ -16,4 +16,9 @@ export class AppComponent {
   get products(): Product[] {
     return this.repo.products;
   }
+
+  createProduct() {
+    this.repo.createProduct(new Product(0, "X-Ray Scuba Mask", "Watersports",
+      "See what the fish are hiding", 49.99, this.repo.products[0].supplier));
+  }
 }
