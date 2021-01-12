@@ -48,6 +48,16 @@ export class Repository {
         this.products.push(prod);
       });
   }
+  replaceProduct(prod: Product) {
+    let data = {
+      name: prod.name,
+      category: prod.category,
+      description: prod.description,
+      price: prod.price,
+      supplier: prod.supplier ? prod.supplier.supplierId : 0
+    };
+    this.http.put("/api/products/" + `${prod.productId}`, data).subscribe(() => this.getProducts());
+  }
 }
 
 
