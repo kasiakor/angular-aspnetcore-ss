@@ -21,4 +21,11 @@ export class AppComponent {
     this.repo.createProduct(new Product(0, "X-Ray Scuba Mask", "Watersports",
       "See what the fish are hiding", 49.99, this.repo.products[0].supplier));
   }
+
+  replaceProduct() {
+    let p = this.repo.products[0];
+    p.name = "Modified Product";
+    p.category = "Modified Category";
+    this.repo.replaceProduct(p);
+  }
 }
