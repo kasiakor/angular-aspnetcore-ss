@@ -58,6 +58,15 @@ export class Repository {
     };
     this.http.put("/api/products/" + `${prod.productId}`, data).subscribe(() => this.getProducts());
   }
+
+  replaceSupplier(supp: Supplier) {
+    let data = {
+      name: supp.name,
+      city: supp.city,
+      state: supp.state,
+    };
+    this.http.put("/api/suppliers/" + `${supp.supplierId}`, data).subscribe(() => this.getProducts());
+  }
 }
 
 
