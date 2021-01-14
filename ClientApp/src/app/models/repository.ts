@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Filter } from "./configClasses.repository";
 import { Supplier } from "./supplier.model";
 
+const productsUrl = "/api/products";
+
 @Injectable()
 export class Repository {
   product: Product;
@@ -13,6 +15,7 @@ export class Repository {
   constructor(private http: HttpClient) {
     //this.filter.category = "soccer";
     //this.filter.search = "ball";
+    this.filter.related = true;
     this.getProducts();
     //this.getSuppliers();
   }
@@ -20,15 +23,14 @@ export class Repository {
     this.http.get<Product>("/api/products/" + id).subscribe(p => this.product = p);
   }
   getProducts() {
-    let url = `/api/products`;
+    let url = `${productsUrl}?related=${this.filter.related}`;
     if (this.filter.category) {
-      url += `?category=${this.filter.category}`;
+      url += `&category=${this.filter.category}`;
     }
     if (this.filter.search) {
       url += `&search=${this.filter.search}`;
     }
     this.http.get<Product[]>(url).subscribe(prods => this.products = prods);
-    console.log("get products method");
   }
 
   getSuppliers() {
