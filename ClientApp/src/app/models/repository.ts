@@ -69,6 +69,12 @@ export class Repository {
     };
     this.http.put("/api/suppliers/" + `${supp.supplierId}`, data).subscribe(() => this.getProducts());
   }
+
+  updateProduct(id: number, changes: Map<string, any>) {
+    let patch = [];
+    changes.forEach((value, key) => patch.push({ op: "replace", path: key, value: value }));
+    this.http.patch("/api/products/" + `${id}`, patch).subscribe(() => this.getProducts());
+  }
 }
 
 
