@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerApp.Models;
 using ServerApp.Models.BindingTargets;
@@ -122,6 +123,34 @@ namespace ServerApp.Controllers
                     context.Attach(p.Supplier);
                 }
                 context.Update(p);
+                context.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult UpdateProduct(long id,
+                [FromBody]JsonPatchDocument<ProductData> patch)
+        {
+
+            Product product = context.Products
+                                .Include(p => p.Supplier)
+                                .First(p => p.ProductId == id);
+            ProductData pdata = new ProductData { Product = product };
+
+            patch.ApplyTo(pdata, ModelState);
+
+            if (ModelState.IsValid && TryValidateModel(pdata))
+            {
+
+                if (product.Supplier != null && product.Supplier.SupplierId != 0)
+                {
+                    context.Attach(product.Supplier);
+                }
                 context.SaveChanges();
                 return Ok();
             }
