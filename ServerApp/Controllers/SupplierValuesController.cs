@@ -38,7 +38,7 @@ namespace ServerApp.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPut("{id}")]
         public IActionResult ReplaceSupplier(long id, [FromBody]SupplierData sdata)
         {
             if (ModelState.IsValid)
