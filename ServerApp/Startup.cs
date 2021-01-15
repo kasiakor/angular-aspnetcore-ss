@@ -33,7 +33,7 @@ namespace ServerApp
             //JSON serializer to omit null properties
             services.AddControllersWithViews().AddJsonOptions(opts => {
                 opts.JsonSerializerOptions.IgnoreNullValues = true;
-            });
+            }).AddNewtonsoftJson();
 
             services.AddSwaggerGen(options =>
             {
