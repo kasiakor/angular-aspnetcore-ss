@@ -8,6 +8,7 @@ const productsUrl = "/api/products";
 
 @Injectable()
 export class Repository {
+  //access to app data
   product: Product;
   products: Product[];
   suppliers: Supplier[] = [];
@@ -19,6 +20,8 @@ export class Repository {
     this.getProducts();
     //this.getSuppliers();
   }
+
+  //methods that send http requests to web service and use result to update properties
   getProduct(id: number) {
     this.http.get<Product>("/api/products/" + id).subscribe(p => this.product = p);
   }
