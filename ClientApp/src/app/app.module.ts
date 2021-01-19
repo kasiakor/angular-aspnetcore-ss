@@ -4,11 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ModelModule } from "./models/model.module";
 import { ProductTableComponent } from "./structure/productTable.component";
+import { CategoryFilterComponent } from "./structure/categoryFilter.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductTableComponent
+    ProductTableComponent,
+    CategoryFilterComponent
   ],
   imports: [
     BrowserModule,

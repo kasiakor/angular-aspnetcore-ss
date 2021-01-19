@@ -4,7 +4,7 @@ import { Product } from  "../models/product.model";
 
 @Component({
   selector: "product-table",
-  templateUrl: "./productTable.component.html"
+  templateUrl: "productTable.component.html"
 })
 
 export class ProductTableComponent {
