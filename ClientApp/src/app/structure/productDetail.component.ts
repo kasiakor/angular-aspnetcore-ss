@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Repository } from "../models/repository";
 import { Product } from "../models/product.model";
-import { Router, ActivatedRoute } from "@angular/router"
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "product-detail",
@@ -9,14 +9,18 @@ import { Router, ActivatedRoute } from "@angular/router"
 })
 
 export class ProductDetailComponent {
-  constructor(private repo: Repository, router: Router, activeRoute: ActivatedRoute) { 
-  let id = Number.parseInt(activeRoute.snapshot.params["id"]);
+  constructor(private repo: Repository, router: Router, activeRoute: ActivatedRoute) {
+    let id = Number.parseInt(activeRoute.snapshot.params["id"]);
 
-  if (id) {
-    this.repo.getProduct(id);
+    if (id) {
+      this.repo.getProduct(id);
+    }
+    else {
+      router.navigateByUrl("/");
+    }
   }
-  else {
-    router.navigateByUrl("/");
+  //product property returns the value of the property with the same name in the repo
+  get product(): Product {
+    return this.repo.product;
   }
 }
-
