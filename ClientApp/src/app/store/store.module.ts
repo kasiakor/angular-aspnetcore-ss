@@ -4,12 +4,12 @@ import { CartSummaryComponent } from "./cartSummary.component";
 import { CategoryFilterComponent } from "./categoryFilter.component";
 import { PaginationComponent } from "./pagination.component";
 import { ProductListComponent } from "./productList.component";
-import { RatingsComponent } from "./ratings.component";
+//import { RatingsComponent } from "./ratings.component";
 import { ProductSelectionComponent } from "./productSelection.component";
 
 //configuration metadata
 @NgModule({
-  declarations: [CartSummaryComponent, CategoryFilterComponent, PaginationComponent, ProductListComponent, RatingsComponent, ProductSelectionComponent],
+  declarations: [CartSummaryComponent, CategoryFilterComponent, PaginationComponent, ProductListComponent, ProductSelectionComponent],
   imports: [BrowserModule],
   exports: [ProductSelectionComponent]
 })
