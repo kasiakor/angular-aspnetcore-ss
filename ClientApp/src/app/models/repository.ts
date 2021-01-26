@@ -5,6 +5,10 @@ import { Filter } from "./configClasses.repository";
 import { Supplier } from "./supplier.model";
 
 const productsUrl = "/api/products";
+type productMetadata = {
+  data: Product[],
+  categories: string[]
+}
 
 @Injectable()
 export class Repository {
@@ -13,6 +17,7 @@ export class Repository {
   products: Product[];
   suppliers: Supplier[] = [];
   filter: Filter = new Filter();
+  categories: string[] = [];
   constructor(private http: HttpClient) {
     //this.filter.category = "soccer";
     //this.filter.search = "ball";
@@ -33,9 +38,14 @@ export class Repository {
     if (this.filter.search) {
       url += `&search=${this.filter.search}`;
     }
-    this.http.get<Product[]>(url).subscribe(prods => this.products = prods);
+    url += "&metadata=true";
+    this.http.get<productMetadata>(url).subscribe(md => {
+      this.products = md.data,
+        this.categories = md.categories
+    });
+    //this.http.get<Product[]>(url).subscribe(prods => this.products = prods);
   }
-
+  
   getSuppliers() {
     let url = `/api/suppliers`;
     this.http.get<Supplier[]>(url).subscribe(sups => this.suppliers = sups);
