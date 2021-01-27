@@ -22,7 +22,7 @@ export class Repository {
     //this.filter.category = "soccer";
     //this.filter.search = "ball";
     this.filter.related = true;
-    this.getProducts();
+    //this.getProducts();
     //this.getSuppliers();
   }
 
