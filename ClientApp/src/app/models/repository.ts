@@ -1,7 +1,7 @@
 import { Product } from "./product.model";
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Filter } from "./configClasses.repository";
+import { Filter, Pagination } from "./configClasses.repository";
 import { Supplier } from "./supplier.model";
 
 const productsUrl = "/api/products";
@@ -17,6 +17,8 @@ export class Repository {
   products: Product[];
   suppliers: Supplier[] = [];
   filter: Filter = new Filter();
+  //when product data is refreshed selected page will be reset
+  paginationObject = new Pagination();
   categories: string[] = [];
   constructor(private http: HttpClient) {
     //this.filter.category = "soccer";
