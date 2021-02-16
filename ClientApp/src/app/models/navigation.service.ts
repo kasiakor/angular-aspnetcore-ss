@@ -16,12 +16,27 @@ export class NavigationService {
   private handleNavigationChange() {
     let active = this.active.firstChild.snapshot;
     if (active.url.length > 0 && active.url[0].path === "store") {
-      let category = active.params["category"];
-      this.repository.filter.category = category || "";
+      if (active.params["categoryOrPage"] !== undefined) {
+        let value = Number.parseInt(active.params["categoryOrPage"]);
+        if (!Number.isNaN(value)) {
+          this.repository.filter.category = "";
+          this.repository.paginationObject.currentPage = value;
+        } else {
+          this.repository.filter.category
+            = active.params["categoryOrPage"];
+          this.repository.paginationObject.currentPage = 1;
+        }
+      } else {
+        let category = active.params["category"];
+        this.repository.filter.category = category || "";
+        this.repository.paginationObject.currentPage
+          = Number.parseInt(active.params["page"]) || 1
+      }
       this.repository.getProducts();
         }
   }
-
+  //methods that can be invoked by the components to change app state. select category or trigger navigation change
+  //properties that return the state data from repository
   get categories(): string[] {
     return this.repository.categories;
   }
@@ -32,5 +47,25 @@ export class NavigationService {
 
   set currentCategory(newCategory: string) {
     this.router.navigateByUrl(`/store/${(newCategory || "").toLowerCase()}`);
+  }
+
+  get currentPage(): number {
+    return this.repository.paginationObject.currentPage;
+  }
+
+  set currentPage(newPage: number) {
+    if (this.currentCategory === "") {
+      this.router.navigateByUrl(`/store/${newPage}`);
+    } else {
+      this.router.navigateByUrl(`/store/${this.currentCategory}/${newPage}`);
+    }
+  }
+
+  get productsPerPage(): number {
+    return this.repository.paginationObject.productsPerPage;
+  }
+
+  get productCount(): number {
+    return (this.repository.products || []).length;
   }
 }
