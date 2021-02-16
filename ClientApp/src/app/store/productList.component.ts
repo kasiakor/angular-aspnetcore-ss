@@ -10,6 +10,17 @@ import { Product } from "../models/product.model";
 export class ProductListComponent {
   constructor(private repo: Repository) { }
   get products(): Product[] {
-    return this.repo.products;
+    if (this.repo.products != null && this.repo.products.length > 0) {
+      let pageIndex = (this.repo.paginationObject.currentPage - 1)
+        * this.repo.paginationObject.productsPerPage;
+      console.log("pageIndex:" +pageIndex);
+      console.log("slice:" + this.repo.products.slice(pageIndex,
+        pageIndex + this.repo.paginationObject.productsPerPage));
+      console.log("products:" + Product);
+      return this.repo.products.slice(pageIndex,
+        pageIndex + this.repo.paginationObject.productsPerPage);
+  
+    }
   }
 }
+

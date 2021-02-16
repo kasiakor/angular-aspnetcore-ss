@@ -50,6 +50,7 @@ export class NavigationService {
   }
 
   get currentPage(): number {
+    console.log("currentPage:"+this.repository.paginationObject.currentPage);
     return this.repository.paginationObject.currentPage;
   }
 
@@ -62,10 +63,12 @@ export class NavigationService {
   }
 
   get productsPerPage(): number {
+    console.log("productsPerPage:" + this.repository.paginationObject.productsPerPage);
     return this.repository.paginationObject.productsPerPage;
   }
 
   get productCount(): number {
+    console.log("productCount:" + (this.repository.products || []).length);
     return (this.repository.products || []).length;
   }
 }
