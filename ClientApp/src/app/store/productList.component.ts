@@ -16,6 +16,7 @@ export class ProductListComponent {
       console.log("pageIndex:" +pageIndex);
       console.log("slice:" + this.repo.products.slice(pageIndex,
         pageIndex + this.repo.paginationObject.productsPerPage));
+      console.log(Product[0]);
       return this.repo.products.slice(pageIndex,
         pageIndex + this.repo.paginationObject.productsPerPage);
   
