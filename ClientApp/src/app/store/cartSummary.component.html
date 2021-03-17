@@ -1,4 +1,15 @@
-<div>
-  Placeholder: Cart Summary
+<div class="text-right p-1">
+  <!--NgIf is a directive. it can be added to any tag in the template-->
+  <small *ngIf="itemCount  > 0; else empty">
+  {{ itemCount }} item(s), {{ totalPrice | currency:"GBP":"symbol" }}
+  </small>
+  <button class="btn btn-sm ml-1" [disabled] ="itemCount == 0" routerLink="/cart">
+  </button>
 </div>
+
+<ng-template #empty>
+  <small class="text-muted">
+    (cart is empty)
+  </small>
+</ng-template>
 

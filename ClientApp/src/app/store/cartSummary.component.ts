@@ -13,7 +13,7 @@ export class CartSummaryComponent {
     return this.cart.itemCount;
   }
 
-  get titalCount(): number {
+  get totalPrice(): number {
     return this.cart.totalPrice;
   }
 }
