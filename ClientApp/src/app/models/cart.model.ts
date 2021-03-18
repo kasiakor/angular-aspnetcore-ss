@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Product } from "./product.model";
 import { Repository } from './repository';
 
+//Decorator that marks a class as available to be provided and injected as a dependency
 @Injectable()
 export class Cart {
   selections: ProductSelection[] = [];
