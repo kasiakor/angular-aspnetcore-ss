@@ -11,7 +11,7 @@ const routes: Routes = [
   //{ path: "detail", component: ProductDetailComponent },
   //{ path: "detail/:id", component: ProductDetailComponent },
   //{ path: "", component: ProductTableComponent }
-  { path: "cart/", component: CartDetailComponent },
+  { path: "cart", component: CartDetailComponent },
   { path: "store/:category/:page", component: ProductSelectionComponent },
   { path: "store/:categoryOrPage", component: ProductSelectionComponent},
   { path: "store", component: ProductSelectionComponent },
