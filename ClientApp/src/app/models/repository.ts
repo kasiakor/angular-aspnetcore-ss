@@ -104,6 +104,7 @@ export class Repository {
     });
   }
 
+  //result is discarded but http.Client doesnt send request untill subscribe method is called
   storeSessionData<T>(dataType: string, data: T) {
     return this.http.post(`${sessionUrl}/${dataType}`, data)
       .subscribe(response => { });
