@@ -8,7 +8,7 @@ namespace ServerApp.Models
 
     public class Order
     {
-
+        // BindNever attribute does not bind any value to the parameter
         [BindNever]
         public long OrderId { get; set; }
         [Required]
