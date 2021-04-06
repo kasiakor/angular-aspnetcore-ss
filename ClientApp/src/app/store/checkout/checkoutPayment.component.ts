@@ -10,7 +10,7 @@ export class CheckoutPaymentComponent {
   constructor(private router: Router,
     public order: Order) {
     if (order.name == null || order.address == null) {
-      //when user doesnt select any products
+      //when user doesnt provide name or address
       this.router.navigateByUrl("/checkout/step1");
     }
   }
