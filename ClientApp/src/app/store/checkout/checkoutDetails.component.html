@@ -4,10 +4,13 @@
 
 <h2 class="text-center mt-2">Step 1: Your Details</h2>
 
+<!--ngForm is used to create instance of our form without writing any application code for form creation-->
+<!--#detailsForm this attr creates var detailsForm wher valid/invalid properties are provided-->
 <div class="p-2">
   <form novalidate #detailsForm="ngForm">
     <div class="form-group">
       <label>Name</label>
+      <!--validation of input element-->
       <input #name="ngModel" name="name" class="form-control"
              [(ngModel)]="order.name" required />
       <div *ngIf="name.invalid" class="text-danger">
