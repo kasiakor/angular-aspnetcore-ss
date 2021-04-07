@@ -11,11 +11,15 @@ import { CartDetailComponent } from "./cartDetail.component";
 import { FormsModule } from "@angular/forms";
 //required for button elements to which routerLink directived was applied.
 import { RouterModule } from "@angular/router";
+import { CheckoutDetailsComponent } from "./checkout/checkoutDetails.component";
+import { CheckoutPaymentComponent } from "./checkout/checkoutPayment.component";
+import { CheckoutSummaryComponent } from "./checkout/checkoutSummary.component";
+import { OrderConfirmationComponent } from "./checkout/orderConfirmation.component";
 
 
 //configuration metadata
 @NgModule({
-  declarations: [CartSummaryComponent, CategoryFilterComponent, PaginationComponent, ProductListComponent, ProductSelectionComponent, RatingsComponent, CartDetailComponent],
+  declarations: [CartSummaryComponent, CategoryFilterComponent, PaginationComponent, ProductListComponent, ProductSelectionComponent, RatingsComponent, CartDetailComponent, CheckoutDetailsComponent, CheckoutPaymentComponent, CheckoutSummaryComponent, OrderConfirmationComponent],
   imports: [BrowserModule, FormsModule, RouterModule],
   exports: [ProductSelectionComponent]
 })
