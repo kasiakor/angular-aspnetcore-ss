@@ -82,11 +82,10 @@ namespace ServerApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                //the UseEndpoints middleware should be configured at the end
                 endpoints.MapControllerRoute(
                    name: "angular_fallback",
-                    pattern: "{target:regex(store|cart)}/{*catchall}",
-                   //pattern: "{target:regex(table|detail)}/{*catchall}",
+                   pattern: "{target:regex(store|cart|checkout)}/{*catchall}",
                    defaults: new { controller = "Home", action = "Index" });
                 //endpoints.MapRazorPages();
             });
