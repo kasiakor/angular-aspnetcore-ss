@@ -27,6 +27,10 @@ export class Order {
     public cart: Cart,
     router: Router) {
 
+    //data will be stored when the app navigates to a new url that begins with checkout - router class generates events that can be observed within component
+    //router.events returns an observable for the routing events
+    //subscribe handles events by sending session data to the server
+    //filter selects navigationstart even not to send multiple requests to the server for the same navigation change
     router.events
       .pipe(filter(event => event instanceof NavigationStart))
       .subscribe(event => {
@@ -41,7 +45,7 @@ export class Order {
           });
         }
       });
-
+    //getSessionData retrieves previously stored data and uses it to populate properties
     repo.getSessionData<OrderSession>("checkout").subscribe(data => {
       if (data != null) {
         this.name = data.name;
