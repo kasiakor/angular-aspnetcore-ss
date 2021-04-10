@@ -43,6 +43,7 @@ namespace ServerApp.Models
 
     public class CartLine
     {
+        // model binding should exclude a property
         [BindNever]
         public long CartLineId { get; set; }
         [Required]

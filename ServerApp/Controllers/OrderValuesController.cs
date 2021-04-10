@@ -83,3 +83,47 @@ namespace ServerApp.Controllers
         }
     }
 }
+
+///api/orders = [
+//   {
+//      "orderId":1,
+//      "name":"Ewa Zak",
+//      "products":[
+//         {
+//            "cartLineId":1,
+//            "productId":1,
+//            "quantity":1
+//         }
+//      ],
+//      "address":"Flower Street",
+//      "payment":{
+//         "paymentId":1,
+//         "cardNumber":"080808080808080",
+//         "cardExpiry":"pkg;ks;kfd",
+//         "cardSecurityCode":"lm;k;",
+//         "total":275.00,
+//         "authCode":"12345"
+//      },
+//      "shipped":false
+//   },
+//   {
+//      "orderId":2,
+//      "name":"Ewa Zak",
+//      "products":[
+//         {
+//            "cartLineId":2,
+//            "productId":3,
+//            "quantity":1
+//         }
+//      ],
+//      "address":"Flower Street",
+//      "payment":{
+//         "paymentId":2,
+//         "cardNumber":"ljsfkk;;ak;fsk",
+//         "cardExpiry":".lmljlj",
+//         "cardSecurityCode":";k;k;k",
+//         "total":19.50,
+//         "authCode":"12345"
+//      },
+//      "shipped":false
+//   },
