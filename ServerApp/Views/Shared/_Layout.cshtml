@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="/" />
+     @*root url will be specified by the view*@
+    <base href="@( ViewData["RootUrl"] ?? "/")" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SportsStore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+    @RenderSection("ExtraCSS", required: false)
 </head>
 <body>
     @*<h2 class="bg-dark text-white" p-2>SportsStore</h2>*@
