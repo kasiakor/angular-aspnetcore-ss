@@ -101,7 +101,13 @@ namespace ServerApp
                    name: "angular_fallback",
                    pattern: "{target:regex(store|cart|checkout)}/{*catchall}",
                    defaults: new { controller = "Home", action = "Index" });
-                endpoints.MapFallbackToClientSideBlazor<BlazorApp.Startup>("blazor/{*path:nonfile}", "index.html");
+
+                endpoints.MapControllerRoute(
+                  name: "blazor_integration",
+                  pattern: "/blazor/{*path:nonfile}",
+                  defaults: new { controller = "Home", action = "Blazor" });
+
+                //endpoints.MapFallbackToClientSideBlazor<BlazorApp.Startup>("blazor/{*path:nonfile}", "index.html");
                 //endpoints.MapRazorPages();
             });
 
