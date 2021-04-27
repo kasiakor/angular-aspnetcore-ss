@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { CartSummaryComponent } from "./cartSummary.component";
 import { CategoryFilterComponent } from "./categoryFilter.component";
@@ -15,12 +15,14 @@ import { CheckoutDetailsComponent } from "./checkout/checkoutDetails.component";
 import { CheckoutPaymentComponent } from "./checkout/checkoutPayment.component";
 import { CheckoutSummaryComponent } from "./checkout/checkoutSummary.component";
 import { OrderConfirmationComponent } from "./checkout/orderConfirmation.component";
+import { BlazorLoader } from "./blazorLoader.component";
 
 
 //configuration metadata
 @NgModule({
-  declarations: [CartSummaryComponent, CategoryFilterComponent, PaginationComponent, ProductListComponent, ProductSelectionComponent, RatingsComponent, CartDetailComponent, CheckoutDetailsComponent, CheckoutPaymentComponent, CheckoutSummaryComponent, OrderConfirmationComponent],
+  declarations: [CartSummaryComponent, CategoryFilterComponent, PaginationComponent, ProductListComponent, ProductSelectionComponent, RatingsComponent, CartDetailComponent, CheckoutDetailsComponent, CheckoutPaymentComponent, CheckoutSummaryComponent, OrderConfirmationComponent, BlazorLoader],
   imports: [BrowserModule, FormsModule, RouterModule],
-  exports: [ProductSelectionComponent]
+  exports: [ProductSelectionComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class StoreModule {}
