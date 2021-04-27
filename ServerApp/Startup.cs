@@ -114,6 +114,8 @@ namespace ServerApp
             app.Map("/blazor", opts =>
                opts.UseClientSideBlazorFiles<BlazorApp.Startup>());
 
+            app.UseClientSideBlazorFiles<BlazorApp.Startup>();
+
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {

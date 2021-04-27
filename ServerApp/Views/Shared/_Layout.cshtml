@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
      @*root url will be specified by the view*@
+     @*blazor relies on base element to create urls for its files*@
     <base href="@( ViewData["RootUrl"] ?? "/")" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +12,6 @@
     @RenderSection("ExtraCSS", required: false)
 </head>
 <body>
-    @*<h2 class="bg-dark text-white" p-2>SportsStore</h2>*@
     @RenderBody()
     @RenderSection("Scripts", required: false)
 </body>
