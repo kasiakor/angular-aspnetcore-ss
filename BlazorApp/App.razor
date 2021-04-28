@@ -1,4 +1,6 @@
 ﻿@inject HttpClient Http
+@*The IJSRuntime abstraction is asynchronous to allow for Blazor Server scenarios. If the app is a Blazor WebAssembly app and you want to invoke a JavaScript function synchronously, downcast to IJSInProcessRuntime and call Invoke*@
+@inject IJSRuntime JSRuntime
 
 <div class="p-2 bg-info text-white">
     <EditForm Model="@search" OnValidSubmit="@HandleSearch" class="form-inline">
@@ -10,7 +12,7 @@
 </div>
 
 @code {
-    static readonly string productsUrl = "/api/products";
+    //static readonly string productsUrl = "/api/products";
     SearchSettings search = new SearchSettings();
     string results = "No results to display";
 
@@ -19,9 +21,14 @@
     {
         if (search.searchTerm != String.Empty)
         {
+            //Product[] prods =
+            //    await Http.GetJsonAsync<Product[]>
+            //    ($"{productsUrl}/?search={search.searchTerm}");
             Product[] prods =
-                await Http.GetJsonAsync<Product[]>
-                ($"{productsUrl}/?search={search.searchTerm}");
+                await JSRuntime.InvokeAsync<Product[]>
+                ("angular_searchProducts", search.searchTerm);
+            //blazor component receives the product objects from the angular object without duplicationg http requests 
+
             decimal totalPrice = prods.Select(p => p.Price).Sum();
             results = $"{ prods.Length } products, total price is ${ totalPrice }";
             StateHasChanged();
