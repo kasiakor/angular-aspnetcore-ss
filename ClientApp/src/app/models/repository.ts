@@ -39,7 +39,9 @@ export class Repository {
   getProduct(id: number) {
     this.http.get<Product>("/api/products/" + id).subscribe(p => this.product = p);
   }
-  getProducts() {
+  //getProducts() { - replaced with promise to change app state trogered by blazor
+  //A promise is a placeholder for a future value./angular uses observables
+  getProducts(): Promise<productMetadata> {
     let url = `${productsUrl}?related=${this.filter.related}`;
     if (this.filter.category) {
       url += `&category=${this.filter.category}`;
@@ -48,11 +50,14 @@ export class Repository {
       url += `&search=${this.filter.search}`;
     }
     url += "&metadata=true";
-    this.http.get<productMetadata>(url).subscribe(md => {
-      this.products = md.data,
-        this.categories = md.categories
-    });
-    //this.http.get<Product[]>(url).subscribe(prods => this.products = prods);
+    //this.http.get<productMetadata>(url).subscribe(md => {
+    return this.http.get<productMetadata>(url)
+      .toPromise<productMetadata>()
+      .then(md => {
+        this.products = md.data;
+        this.categories = md.categories;
+        return md;
+      });
   }
   
   getSuppliers() {
