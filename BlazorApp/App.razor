@@ -16,6 +16,11 @@
     SearchSettings search = new SearchSettings();
     string results = "No results to display";
 
+    //create wrapper object in blazor to  provide angular with the object to use
+     protected override void OnAfterRender(bool firstRender) {
+        JSRuntime.InvokeAsync<object>("angular_receiveReference", 
+            DotNetObjectReference.Create(this));  
+    }
 
     async void HandleSearch()
     {
