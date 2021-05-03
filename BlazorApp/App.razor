@@ -40,6 +40,13 @@
         }
     }
 
+    [JSInvokable]
+    public void resetSearch(string message) {
+        search.searchTerm = "";
+        results = message;
+        StateHasChanged();
+    }
+
     class Product
     {
         public decimal Price { get; set; }
