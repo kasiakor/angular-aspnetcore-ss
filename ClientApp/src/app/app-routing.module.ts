@@ -9,6 +9,11 @@ import { OrderConfirmationComponent } from "./store/checkout/orderConfirmation.c
 
 
 const routes: Routes = [
+  {
+    path: "admin",
+    loadChildren: () =>
+      import("./admin/admin.module").then(module => module.AdminModule),
+  },
   //{ path: "table", component: ProductTableComponent },
   //{ path: "detail", component: ProductDetailComponent },
   //{ path: "detail/:id", component: ProductDetailComponent },
