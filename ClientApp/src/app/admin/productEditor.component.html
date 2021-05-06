@@ -1,0 +1,28 @@
+<div class="form-group">
+  <label>Name</label>
+  <input class="form-control" [(ngModel)]="product.name" />
+</div>
+<div class="form-group">
+  <label>Category</label>
+  <input class="form-control" [(ngModel)]="product.category" />
+</div>
+<div class="form-group">
+  <label>Supplier</label>
+  <!--GET request to /api/products-->
+  <select class="form-control" [(ngModel)]="product.supplier"
+          <!--compare two objects from 2 different get requests-->
+          [compareWith]="compareSuppliers">
+    <!--AngularJS Directive ng-value is used to bind an expression with the value selected via options or input element.-->
+    <!--When model value and the option value are the same, the current value is displayed-->
+    <!--GET request for option element to /api/suppliers-->
+    <option *ngFor="let s of suppliers" [ngValue]="s">{{s.name}}</option>
+  </select>
+</div>
+<div class="form-group">
+  <label>Description</label>
+  <textarea class="form-control" [(ngModel)]="product.description"></textarea>
+</div>
+<div class="form-group">
+  <label>Price</label>
+  <input type="number" class="form-control" [(ngModel)]="product.price" />
+</div>
