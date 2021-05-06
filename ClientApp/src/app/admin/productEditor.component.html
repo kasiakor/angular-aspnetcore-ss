@@ -9,7 +9,7 @@
 <div class="form-group">
   <label>Supplier</label>
   <!--GET request to /api/products-->
-  <select class="form-control" [(ngModel)]="product.supplier"
+  <select class="form-control" [(ngModel)]="product.supplier">
           <!--compare two objects from 2 different get requests-->
           [compareWith]="compareSuppliers">
     <!--AngularJS Directive ng-value is used to bind an expression with the value selected via options or input element.-->
