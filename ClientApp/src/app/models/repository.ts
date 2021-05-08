@@ -143,6 +143,8 @@ export class Repository {
     });
   }
 
+  //http post request to update the order and then http get request to update the data
+  //order admin component
   shipOrder(order: Order) {
     this.http.post(`${ordersUrl}/${order.orderId}`, {})
       .subscribe(() => this.getOrders())
