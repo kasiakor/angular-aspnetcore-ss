@@ -8,6 +8,10 @@ import { ModelModule } from "./models/model.module";
 //import { ProductDetailComponent } from "./structure/productDetail.component";
 import { FormsModule } from "@angular/forms";
 import { StoreModule } from "./store/store.module";
+//interceptors can be used to receive http errors
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+//provides Observable that produces error messages
+import { ErrorHandlerService } from "./errorHandler.service";
 import { ExternalService } from "./external.service";
 
 
@@ -23,8 +27,13 @@ import { ExternalService } from "./external.service";
     StoreModule
   ],
   //A provider is an instruction to the Dependency Injection system on how to obtain a value for a dependency. Most of the time, these dependencies are services that you create and provide.
-  providers: [ExternalService],
-  bootstrap: [AppComponent]
+  //First registration: service will be consumed through regular dependency injection
+  providers: [ExternalService, ErrorHandlerService, {
+    //Second registration: uses token to tell angular that the service should intercept http requests and responses
+    provide: HTTP_INTERCEPTORS,
+    useExisting: ErrorHandlerService, multi: true
+  }],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   //constructor ensures that externalservice object will be created to provide Blazor with a global function angular_searchProducts to invoke

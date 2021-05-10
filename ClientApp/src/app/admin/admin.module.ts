@@ -7,6 +7,8 @@ import { ProductAdminComponent } from "./productAdmin.component";
 import { OrderAdminComponent } from "./orderAdmin.component";
 import { ProductEditorComponent } from "./productEditor.component";
 import { CommonModule } from "@angular/common";
+import { ExternalService } from '../external.service';
+import { AppComponent } from '../app.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,6 @@ const routes: Routes = [
   imports: [RouterModule,
     FormsModule, RouterModule.forChild(routes), CommonModule],
   declarations: [AdminComponent, OverviewComponent,
-    ProductAdminComponent, OrderAdminComponent, ProductEditorComponent]
+    ProductAdminComponent, OrderAdminComponent, ProductEditorComponent],
 })
 export class AdminModule { }
