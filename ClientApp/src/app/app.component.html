@@ -1,51 +1,5 @@
-<!--Router-outlet in Angular works as a placeholder which is used to load the different components dynamically based on the activated component or current route state. Navigation can be done using router-outlet directive and the activated component will take place inside the router-outlet to load its content.-->
+<div class="bg-danger text-white text-center p-2 m-2" *ngIf="error != null">
+  <h6 *ngFor="let e of error">{{e}}</h6>
+  <button class="btn btn-warning" (click)="clearError()">OK</button>
+</div>
 <router-outlet></router-outlet>
-
-<!--<div class="container">
-  <div class="row">
-    <div class="col">
-      <category-filter></category-filter>
-      <product-table></product-table>
-    </div>
-    <div class="col">
-      <product-detail></product-detail>
-    </div>
-  </div>
-</div>-->
-<!--<div class="p-2">
-  <table class="table table-sm table-striped">
-    <tbody>
-      <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Supplier</th>
-        <th>Ratings</th>
-      </tr>
-      var i of items, iteration expression
-      <tr *ngFor="let product of products">
-        <td>{{product.name}}</td>
-        <td>{{product.category}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.supplier?.name || "none"}}</td>
-        <td>{{product.ratings?.length || "0"}}</td>
-      </tr>
-    </tbody>
-    <tr><th colspan="2" class="bg-info">Product</th></tr>
-    <tr><th>Name</th><td>{{product?.name || "Loading Data..."}}</td></tr>
-    <tr><th>Category</th><td>{{product?.category || "Loading Data..."}}</td></tr>
-    <tr><th>Description</th><td>{{product?.description || "Loading Data..."}}</td></tr>
-    <tr><th>Price</th><td>{{product?.price || "Loading Data..."}}</td></tr>
-    <tr><th colspan="2" class="bg-info">Supplier</th></tr>
-    <tr><th>Name</th><td>{{product?.supplier?.name}}</td></tr>
-    <tr><th>City</th><td>{{product?.supplier?.city}}</td></tr>
-    <tr><th>State</th><td>{{product?.supplier?.state}}</td></tr>
-    <tr><th>Products</th><td>{{product?.supplier?.products?.length}}</td></tr>
-  </table>
-  <button class="btn btn-primary m-1" (click)="createProduct()">Create Product</button>
-  <button class="btn btn-primary m-1" (click)="replaceProduct()">Replace Product</button>
-  <button class="btn btn-primary m-1" (click)="replaceSupplier()">Replace Supplier</button>
-  <button class="btn btn-primary m-1" (click)="updateProduct()">Update Product</button>
-  <button class="btn btn-primary m-1" (click)="deleteProduct()">Delete Product</button>
-  <button class="btn btn-primary m-1" (click)="deleteSupplier()">Delete Supplier</button>
-</div>-->
