@@ -22,6 +22,7 @@ namespace ServerApp.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public Product GetProduct(long id)
         {
             //System.Threading.Thread.Sleep(5000);
@@ -56,6 +57,7 @@ namespace ServerApp.Controllers
             return result;
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetProducts(string category, string search, bool related = false, bool metadata = false)
         {
             IQueryable<Product> query = context.Products;
