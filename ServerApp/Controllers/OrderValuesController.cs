@@ -39,6 +39,7 @@ namespace ServerApp.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult CreateOrder([FromBody] Order order)
         {
             if (ModelState.IsValid)
