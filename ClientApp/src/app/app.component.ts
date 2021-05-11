@@ -18,7 +18,7 @@ export class AppComponent {
       })
   }
 
-  get errors(): string[] {
+  get error(): string[] {
     return this.lastError;
   }
 

@@ -5,10 +5,12 @@ using ServerApp.Models;
 using ServerApp.Models.BindingTargets;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ServerApp.Controllers
 {
     [Route("api/products")]
+    [Authorize(Roles = "Administrator")]
     [ApiController]
     public class ProductValuesController : Controller
     {

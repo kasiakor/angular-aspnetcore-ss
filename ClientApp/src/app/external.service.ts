@@ -16,8 +16,7 @@ export class ExternalService {
   private resetFunction: (msg: string) => {};
   constructor(private repository: Repository,
     private zone: NgZone,
-    private navService: NavigationService
-  ) {
+    private navService: NavigationService) {
     //window object provides access to js runtime's global scope
     //Blazor will use this global property to locate angular functionality
     window["angular_searchProducts"] = this.doSearch.bind(this);

@@ -20,6 +20,7 @@ export class ErrorHandlerService implements HttpInterceptor {
         } else if (resp.error.title) {
           this.errSubject.next([resp.error.title]);
         } else {
+          console.log(this.errSubject.next(["An HTTP error occurred"]));
           this.errSubject.next(["An HTTP error occurred"]);
         }
         return throwError(resp);

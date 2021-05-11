@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using ServerApp.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ServerApp.Controllers
 {
 
     [Route("/api/orders")]
+    [Authorize(Roles = "Administrator")]
     [ApiController]
     public class OrderValuesController : Controller
     {
