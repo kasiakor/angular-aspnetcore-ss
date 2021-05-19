@@ -15,6 +15,7 @@ using ServerApp.Models;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace ServerApp
 {
@@ -32,6 +33,11 @@ namespace ServerApp
         {
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+
+            //adding Identity to app, AddDbContext method registers Identity db context class with efcore
+            services.AddDbContext<IdentityDataContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Identity"]));
+            //AddIdentity method tells Identity to use default classes to respresent user and roles and store data through the context class
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityDataContext>();
 
             //JSON serializer to omit null properties
             services.AddControllersWithViews().AddJsonOptions(opts => {
@@ -89,7 +95,7 @@ namespace ServerApp
             app.UseSession();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
@@ -138,6 +144,8 @@ namespace ServerApp
             });
 
             SeedData.SeedDatabase(services.GetRequiredService<DataContext>());
+            //wait is called to ensure db context is available while the db is seeded
+            IdentitySeedData.SeedDatabase(services).Wait();
         }
     }
 }
